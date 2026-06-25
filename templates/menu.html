@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+    <h1>{{ title }}</h1>
+
+    <p>Сьогодні: {{ current_day }}</p>
+
+    <ul>
+        {% for item, price in menu.items() %}
+
+            {% if current_day == "Friday" %}
+                <li>
+                    {{ item }} —
+                    <s>{{ price }} грн</s>
+                    {{ (price * 0.9)|round(0)|int }} грн
+                </li>
+            {% else %}
+                <li>{{ item }} — {{ price }} грн</li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+
+    <a href="/">На головну</a>
+
+</body>
+</html>
